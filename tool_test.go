@@ -1,58 +1,41 @@
 package main_test
 
 import (
-	"context"
-	"encoding/json"
-	"net/http"
-	"net/http/httptest"
 	"testing"
 
 	"github.com/WillScott73/paperless-ngx-mcp/internal/paperless/client"
 	"github.com/WillScott73/paperless-ngx-mcp/internal/paperless/tools"
-	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
 )
 
-func TestAllTools(t *testing.T) {
-	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{"status":"ok"}`))
-	}))
-	defer ts.Close()
+func TestToolRegistration(t *testing.T) {
+	s := server.NewMCPServer("paperless-ngx-mcp", "1.0.0")
+	tools.Register(s, client.New("http://example.com/api/", "dummy-token"))
 
-	c := client.New(ts.URL, "dummy-token")
-	s := server.NewMCPServer("test", "1.0.0")
-	tools.Register(s, c)
-
-	ctx := context.Background()
-
-	testCases := []struct {
-		name string
-		args map[string]interface{}
-	}{
-		{"paperless_health_check", nil},
-		{"paperless_get_statistics", nil},
-		{"paperless_search_documents", map[string]interface{}{"query": "test", "page": 1.0, "page_size": 25.0}},
-		{"paperless_get_document", map[string]interface{}{"id": 123.0}},
-		{"paperless_list_tags", map[string]interface{}{"page": 1.0, "page_size": 25.0}},
-		{"paperless_list_correspondents", map[string]interface{}{"page": 1.0, "page_size": 25.0}},
-		{"paperless_list_document_types", map[string]interface{}{"page": 1.0, "page_size": 25.0}},
+	got := s.ListTools()
+	if len(got) == 0 {
+		t.Fatal("expected registered tools, got none")
 	}
 
-	for _, tc := range testCases {
-		t.Run(tc.name, func(t *testing.T) {
-			req := mcp.CallToolRequest{}
-			req.Params.Name = tc.name
-			if tc.args != nil {
-				req.Params.Arguments = tc.args
-			}
+	want := []string{
+		"paperless_health_check",
+		"paperless_get_statistics",
+		"paperless_search_documents",
+		"paperless_get_document",
+		"paperless_upload_document",
+		"paperless_download_document",
+		"paperless_delete_document",
+		"paperless_bulk_edit_documents",
+		"paperless_list_tags",
+		"paperless_list_correspondents",
+		"paperless_list_document_types",
+		"paperless_list_tasks",
+		"paperless_list_logs",
+	}
 
-			// We have to invoke the tool callback directly, but mark3labs server doesn't expose it easily.
-			// Let's just find the tool in the server and call it.
-			// Actually, mcp-go's server doesn't expose the router.
-			// Let's use the provided handlers if possible, or just realize that the user wants to test
-			// what is WRONG with the tool they used earlier.
-		})
+	for _, name := range want {
+		if _, ok := got[name]; !ok {
+			t.Fatalf("expected tool %q to be registered", name)
+		}
 	}
 }

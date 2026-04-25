@@ -77,7 +77,26 @@ The server will bind to `127.0.0.1:8080`.
 Requirements: Go 1.25+
 
 ```bash
-go build -o paperless-ngx-mcp ./cmd/paperless-ngx-mcp
+go build -trimpath -ldflags="-s -w" -o paperless-ngx-mcp ./cmd/paperless-ngx-mcp
+```
+
+## Releases
+
+Tagged releases publish the raw binaries used by `mcpctl install-latest`:
+
+- Linux: `paperless-ngx-mcp`
+- Windows: `paperless-ngx-mcp.exe`
+
+Latest Linux:
+
+```text
+https://github.com/WillScott73/paperless-ngx-mcp/releases/latest/download/paperless-ngx-mcp
+```
+
+Latest Windows:
+
+```text
+https://github.com/WillScott73/paperless-ngx-mcp/releases/latest/download/paperless-ngx-mcp.exe
 ```
 
 ## Security Notes
