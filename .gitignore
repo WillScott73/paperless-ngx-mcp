@@ -1,7 +1,8 @@
 # Binaries
-paperless-ngx-mcp
-paperless-ngx-mcp.exe
-dist/
+/paperless-ngx-mcp
+/paperless-ngx-mcp.exe
+/bin/paperless-ngx-mcp
+/dist/
 
 # Env
 .env
