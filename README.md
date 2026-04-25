@@ -9,11 +9,22 @@ A production-quality Model Context Protocol (MCP) server for Paperless-ngx, writ
 
 ## Tools Available
 - `paperless_health_check`: Check the health and connectivity of the Paperless-ngx API.
-- `paperless_search_documents`: Search for documents in Paperless-ngx using a query string.
+- `paperless_get_statistics`: Get system statistics including document counts and storage usage.
+- `paperless_search_documents`: Search for documents in Paperless-ngx using a query string. Supports pagination with `page` and `page_size`.
 - `paperless_get_document`: Get metadata and the full OCR text content for a specific document.
-- `paperless_list_tags`: List all tags defined in your instance.
-- `paperless_list_correspondents`: List all document correspondents.
-- `paperless_list_document_types`: List all document types.
+- `paperless_list_tags`: List all tags. Supports pagination.
+- `paperless_list_correspondents`: List all correspondents. Supports pagination.
+- `paperless_list_document_types`: List all document types. Supports pagination.
+
+## Example Usage
+
+Here are some things you can ask an AI assistant with this MCP:
+
+- "What's the status of my document inbox?"
+- "Find all documents related to 'energy bill' from 2024."
+- "Show me my most recent documents (first page, 10 results)."
+- "List all documents tagged with 'Work'."
+- "What are all the correspondents I have on record?"
 
 ## Configuration
 

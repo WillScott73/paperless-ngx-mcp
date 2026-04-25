@@ -66,8 +66,8 @@ func (c *Client) Get(ctx context.Context, path string, target interface{}) error
 	return json.NewDecoder(resp.Body).Decode(target)
 }
 
-func (c *Client) SearchDocuments(ctx context.Context, query string, page int) (interface{}, error) {
-	path := fmt.Sprintf("documents/?query=%s&page=%d", query, page)
+func (c *Client) SearchDocuments(ctx context.Context, query string, page, pageSize int) (interface{}, error) {
+	path := fmt.Sprintf("documents/?query=%s&page=%d&page_size=%d", query, page, pageSize)
 	var result interface{}
 	err := c.Get(ctx, path, &result)
 	return result, err
@@ -80,22 +80,29 @@ func (c *Client) GetDocument(ctx context.Context, id int) (interface{}, error) {
 	return result, err
 }
 
-func (c *Client) ListTags(ctx context.Context, page int) (interface{}, error) {
-	path := fmt.Sprintf("tags/?page=%d", page)
+func (c *Client) ListTags(ctx context.Context, page, pageSize int) (interface{}, error) {
+	path := fmt.Sprintf("tags/?page=%d&page_size=%d", page, pageSize)
 	var result interface{}
 	err := c.Get(ctx, path, &result)
 	return result, err
 }
 
-func (c *Client) ListCorrespondents(ctx context.Context, page int) (interface{}, error) {
-	path := fmt.Sprintf("correspondents/?page=%d", page)
+func (c *Client) ListCorrespondents(ctx context.Context, page, pageSize int) (interface{}, error) {
+	path := fmt.Sprintf("correspondents/?page=%d&page_size=%d", page, pageSize)
 	var result interface{}
 	err := c.Get(ctx, path, &result)
 	return result, err
 }
 
-func (c *Client) ListDocumentTypes(ctx context.Context, page int) (interface{}, error) {
-	path := fmt.Sprintf("document_types/?page=%d", page)
+func (c *Client) ListDocumentTypes(ctx context.Context, page, pageSize int) (interface{}, error) {
+	path := fmt.Sprintf("document_types/?page=%d&page_size=%d", page, pageSize)
+	var result interface{}
+	err := c.Get(ctx, path, &result)
+	return result, err
+}
+
+func (c *Client) GetStatistics(ctx context.Context) (interface{}, error) {
+	path := "statistics/"
 	var result interface{}
 	err := c.Get(ctx, path, &result)
 	return result, err
