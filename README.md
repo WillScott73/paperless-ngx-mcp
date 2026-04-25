@@ -8,8 +8,12 @@ A production-quality Model Context Protocol (MCP) server for Paperless-ngx, writ
 - Statically compiled single binary for easy deployment.
 
 ## Tools Available
-- `paperless_health_check`: Check API connectivity.
-- `paperless_search_documents`: Search for documents with a query.
+- `paperless_health_check`: Check the health and connectivity of the Paperless-ngx API.
+- `paperless_search_documents`: Search for documents in Paperless-ngx using a query string.
+- `paperless_get_document`: Get metadata and the full OCR text content for a specific document.
+- `paperless_list_tags`: List all tags defined in your instance.
+- `paperless_list_correspondents`: List all document correspondents.
+- `paperless_list_document_types`: List all document types.
 
 ## Configuration
 
