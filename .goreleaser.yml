@@ -1,4 +1,4 @@
-name: paperless-ngx-mcp
+project_name: paperless-ngx-mcp
 
 builds:
   - id: paperless-ngx-mcp
