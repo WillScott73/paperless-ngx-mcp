@@ -10,21 +10,8 @@ permissions:
 
 jobs:
   release:
-    name: Build and release on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-latest
-            goos: linux
-            binary_name: paperless-ngx-mcp
-          - os: windows-latest
-            goos: windows
-            binary_name: paperless-ngx-mcp.exe
-    defaults:
-      run:
-        shell: bash
+    name: Build and release
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,17 +27,21 @@ jobs:
       - name: Test
         run: go test ./...
 
-      - name: Build
+      - name: Build Linux amd64
         run: |
           mkdir -p dist
-          CGO_ENABLED=0 \
-          GOOS=${{ matrix.goos }} \
-          GOARCH=amd64 \
-          go build -trimpath -ldflags="-s -w" -o "dist/${{ matrix.binary_name }}" ./cmd/paperless-ngx-mcp
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o "dist/paperless-ngx-mcp" ./cmd/paperless-ngx-mcp
+
+      - name: Build Windows amd64
+        run: |
+          mkdir -p dist
+          CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o "dist/paperless-ngx-mcp.exe" ./cmd/paperless-ngx-mcp
 
       - name: Attach to GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/${{ matrix.binary_name }}
+          files: |
+            dist/paperless-ngx-mcp
+            dist/paperless-ngx-mcp.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
