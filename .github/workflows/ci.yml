@@ -1,0 +1,42 @@
+name: Paperless MCP CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  test:
+    name: Test and Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Run go fmt
+        run: go fmt ./...
+
+      - name: Run go vet
+        run: go vet ./...
+
+      - name: Run tests
+        run: go test -v ./...
+
+      - name: Build Linux amd64
+        run: GOOS=linux GOARCH=amd64 go build -o dist/paperless-ngx-mcp-linux-amd64 ./cmd/paperless-ngx-mcp
+
+      - name: Build Windows amd64
+        run: GOOS=windows GOARCH=amd64 go build -o dist/paperless-ngx-mcp-windows-amd64.exe ./cmd/paperless-ngx-mcp
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries
+          path: dist/
