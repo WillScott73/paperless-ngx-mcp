@@ -30,10 +30,14 @@ jobs:
         run: go test -v ./...
 
       - name: Build Linux amd64
-        run: GOOS=linux GOARCH=amd64 go build -o dist/paperless-ngx-mcp-linux-amd64 ./cmd/paperless-ngx-mcp
+        run: |
+          mkdir -p dist
+          GOOS=linux GOARCH=amd64 go build -o dist/paperless-ngx-mcp-linux-amd64 ./cmd/paperless-ngx-mcp
 
       - name: Build Windows amd64
-        run: GOOS=windows GOARCH=amd64 go build -o dist/paperless-ngx-mcp-windows-amd64.exe ./cmd/paperless-ngx-mcp
+        run: |
+          mkdir -p dist
+          GOOS=windows GOARCH=amd64 go build -o dist/paperless-ngx-mcp-windows-amd64.exe ./cmd/paperless-ngx-mcp
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
