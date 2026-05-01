@@ -1,7 +1,6 @@
 package config
 
 import (
-	"errors"
 	"fmt"
 	"os"
 )
@@ -10,38 +9,54 @@ import (
 type Config struct {
 	BaseURL    string
 	APIToken   string
-	Transport  string // stdio or http
-	Port       string // for http transport
-	Host       string // for http transport
+	Transport  string
+	Port       string
+	Host       string
+	MCPBaseURL string
 }
 
 // Load reads configuration from environment variables.
 func Load() (*Config, error) {
 	cfg := &Config{
-		BaseURL:   os.Getenv("PAPERLESS_BASE_URL"),
-		APIToken:  os.Getenv("PAPERLESS_API_TOKEN"),
-		Transport: os.Getenv("TRANSPORT"),
-		Port:      os.Getenv("PORT"),
-		Host:      os.Getenv("HOST"),
+		BaseURL:    os.Getenv("PAPERLESS_BASE_URL"),
+		APIToken:   os.Getenv("PAPERLESS_API_TOKEN"),
+		Transport:  os.Getenv("PAPERLESS_MCP_TRANSPORT"),
+		Port:       os.Getenv("PAPERLESS_MCP_PORT"),
+		Host:       os.Getenv("PAPERLESS_MCP_HOST"),
+		MCPBaseURL: os.Getenv("PAPERLESS_MCP_BASE_URL"),
+	}
+
+	// Backward compatibility with the older env names documented in the README.
+	if cfg.Transport == "" {
+		cfg.Transport = os.Getenv("TRANSPORT")
+	}
+	if cfg.Port == "" {
+		cfg.Port = os.Getenv("PORT")
+	}
+	if cfg.Host == "" {
+		cfg.Host = os.Getenv("HOST")
 	}
 
 	if cfg.BaseURL == "" {
-		return nil, errors.New("PAPERLESS_BASE_URL is required")
+		return nil, fmt.Errorf("PAPERLESS_BASE_URL is required")
 	}
 	if cfg.APIToken == "" {
-		return nil, errors.New("PAPERLESS_API_TOKEN is required")
+		return nil, fmt.Errorf("PAPERLESS_API_TOKEN is required")
 	}
 
 	if cfg.Transport == "" {
-		cfg.Transport = "stdio" // Default
+		cfg.Transport = "stdio"
 	}
 
-	if cfg.Transport == "http" {
+	if cfg.Transport == "http" || cfg.Transport == "stateless" {
 		if cfg.Port == "" {
-			cfg.Port = "8080" // Default port for HTTP
+			cfg.Port = "8080"
 		}
 		if cfg.Host == "" {
-			cfg.Host = "127.0.0.1" // Default host for HTTP
+			cfg.Host = "127.0.0.1"
+		}
+		if cfg.MCPBaseURL == "" {
+			cfg.MCPBaseURL = "http://" + cfg.Host + ":" + cfg.Port
 		}
 	}
 
@@ -50,8 +65,10 @@ func Load() (*Config, error) {
 
 // Validate checks if the configuration is sound.
 func (c *Config) Validate() error {
-	if c.Transport != "stdio" && c.Transport != "http" {
-		return fmt.Errorf("invalid transport: %s, must be stdio or http", c.Transport)
+	switch c.Transport {
+	case "stdio", "http", "stateless":
+		return nil
+	default:
+		return fmt.Errorf("invalid transport: %s, must be stdio, http, or stateless", c.Transport)
 	}
-	return nil
 }

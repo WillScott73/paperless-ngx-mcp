@@ -74,7 +74,7 @@ The server will bind to `127.0.0.1:8080`.
 
 ## Building from source
 
-Requirements: Go 1.25+
+Requirements: Go 1.25.5+
 
 ```bash
 go build -trimpath -ldflags="-s -w" -o paperless-ngx-mcp ./cmd/paperless-ngx-mcp

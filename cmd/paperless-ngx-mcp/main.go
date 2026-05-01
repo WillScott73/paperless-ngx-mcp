@@ -36,8 +36,13 @@ func main() {
 			fmt.Fprintf(os.Stderr, "Stdio server error: %v\n", err)
 			os.Exit(1)
 		}
+	case "stateless":
+		if err := http.ServeStateless(srv, cfg.Port); err != nil {
+			fmt.Fprintf(os.Stderr, "Stateless server error: %v\\n", err)
+			os.Exit(1)
+		}
 	case "http":
-		if err := http.Serve(srv, cfg.Host, cfg.Port); err != nil {
+		if err := http.Serve(srv, cfg.Host, cfg.Port, cfg.MCPBaseURL); err != nil {
 			fmt.Fprintf(os.Stderr, "HTTP server error: %v\n", err)
 			os.Exit(1)
 		}

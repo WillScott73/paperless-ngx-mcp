@@ -1,0 +1,2392 @@
+{
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "title": "Paperless MCP",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/paperless_bulk_edit_documents": {
+      "post": {
+        "operationId": "paperless_bulk_edit_documents",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "document_ids": {
+                            "description": "List of document IDs.",
+                            "type": "array"
+                          },
+                          "method": {
+                            "description": "Operation method (e.g., 'set_correspondent', 'add_tag', 'delete').",
+                            "type": "string"
+                          },
+                          "parameters": {
+                            "description": "Additional parameters for the method.",
+                            "properties": {},
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "document_ids",
+                          "method"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_bulk_edit_documents",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Perform bulk operations on multiple documents."
+      }
+    },
+    "/paperless_create_correspondent": {
+      "post": {
+        "operationId": "paperless_create_correspondent",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "name": {
+                            "description": "The name of the correspondent.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_create_correspondent",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Create a new correspondent in Paperless-ngx."
+      }
+    },
+    "/paperless_create_custom_field": {
+      "post": {
+        "operationId": "paperless_create_custom_field",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "data_type": {
+                            "description": "The data type of the field (e.g., 'string', 'boolean', 'date', 'integer', 'float', 'monetary', 'documentlink', 'url', 'select').",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The name of the custom field.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "data_type"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_create_custom_field",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Define a new custom field."
+      }
+    },
+    "/paperless_create_document_type": {
+      "post": {
+        "operationId": "paperless_create_document_type",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "name": {
+                            "description": "The name of the document type.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_create_document_type",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Create a new document type."
+      }
+    },
+    "/paperless_create_share_link": {
+      "post": {
+        "operationId": "paperless_create_share_link",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "document_id": {
+                            "description": "The ID of the document to share.",
+                            "type": "number"
+                          },
+                          "expires": {
+                            "description": "Optional expiration date/time.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "document_id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_create_share_link",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Create a temporary sharing link for a document."
+      }
+    },
+    "/paperless_create_storage_path": {
+      "post": {
+        "operationId": "paperless_create_storage_path",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "name": {
+                            "description": "The name of the storage path.",
+                            "type": "string"
+                          },
+                          "path": {
+                            "description": "The path string.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "path"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_create_storage_path",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Create a new storage path."
+      }
+    },
+    "/paperless_create_tag": {
+      "post": {
+        "operationId": "paperless_create_tag",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "name": {
+                            "description": "The name of the tag.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_create_tag",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Create a new tag in Paperless-ngx."
+      }
+    },
+    "/paperless_delete_correspondent": {
+      "post": {
+        "operationId": "paperless_delete_correspondent",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the correspondent to delete.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_delete_correspondent",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Delete a correspondent."
+      }
+    },
+    "/paperless_delete_custom_field": {
+      "post": {
+        "operationId": "paperless_delete_custom_field",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the custom field to delete.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_delete_custom_field",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Remove a custom field definition."
+      }
+    },
+    "/paperless_delete_document": {
+      "post": {
+        "operationId": "paperless_delete_document",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the document to delete.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_delete_document",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Delete a document from Paperless-ngx."
+      }
+    },
+    "/paperless_delete_document_type": {
+      "post": {
+        "operationId": "paperless_delete_document_type",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the document type to delete.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_delete_document_type",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Delete a document type."
+      }
+    },
+    "/paperless_delete_share_link": {
+      "post": {
+        "operationId": "paperless_delete_share_link",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the share link to delete.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_delete_share_link",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Revoke a share link."
+      }
+    },
+    "/paperless_delete_storage_path": {
+      "post": {
+        "operationId": "paperless_delete_storage_path",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the storage path to delete.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_delete_storage_path",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Delete a storage path."
+      }
+    },
+    "/paperless_delete_tag": {
+      "post": {
+        "operationId": "paperless_delete_tag",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the tag to delete.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_delete_tag",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Delete a tag."
+      }
+    },
+    "/paperless_download_document": {
+      "post": {
+        "operationId": "paperless_download_document",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the document.",
+                            "type": "number"
+                          },
+                          "mode": {
+                            "description": "Download mode: 'download' (original), 'preview', or 'thumbnail'. Default: 'download'",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_download_document",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Download a document (original, preview, or thumbnail) from Paperless-ngx."
+      }
+    },
+    "/paperless_get_document": {
+      "post": {
+        "operationId": "paperless_get_document",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the document.",
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_get_document",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Get metadata and OCR text content for a specific document in Paperless-ngx."
+      }
+    },
+    "/paperless_get_log": {
+      "post": {
+        "operationId": "paperless_get_log",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "name": {
+                            "description": "The name of the log file.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_get_log",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Fetch the content of a specific log file."
+      }
+    },
+    "/paperless_get_statistics": {
+      "post": {
+        "operationId": "paperless_get_statistics",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {},
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_get_statistics",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Get system statistics including document counts, inbox status, and storage usage."
+      }
+    },
+    "/paperless_health_check": {
+      "post": {
+        "operationId": "paperless_health_check",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {},
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_health_check",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Check the health and connectivity of the Paperless-ngx API."
+      }
+    },
+    "/paperless_list_correspondents": {
+      "post": {
+        "operationId": "paperless_list_correspondents",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "page": {
+                            "description": "Page number (default: 1)",
+                            "type": "number"
+                          },
+                          "page_size": {
+                            "description": "Results per page (default: 25, max: 100)",
+                            "type": "number"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_list_correspondents",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "List all correspondents in Paperless-ngx."
+      }
+    },
+    "/paperless_list_custom_fields": {
+      "post": {
+        "operationId": "paperless_list_custom_fields",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "page": {
+                            "description": "Page number (default: 1)",
+                            "type": "number"
+                          },
+                          "page_size": {
+                            "description": "Results per page (default: 25, max: 100)",
+                            "type": "number"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_list_custom_fields",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "List all custom field definitions."
+      }
+    },
+    "/paperless_list_document_types": {
+      "post": {
+        "operationId": "paperless_list_document_types",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "page": {
+                            "description": "Page number (default: 1)",
+                            "type": "number"
+                          },
+                          "page_size": {
+                            "description": "Results per page (default: 25, max: 100)",
+                            "type": "number"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_list_document_types",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "List all document types in Paperless-ngx."
+      }
+    },
+    "/paperless_list_logs": {
+      "post": {
+        "operationId": "paperless_list_logs",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {},
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_list_logs",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "List available log files."
+      }
+    },
+    "/paperless_list_share_links": {
+      "post": {
+        "operationId": "paperless_list_share_links",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "page": {
+                            "description": "Page number (default: 1)",
+                            "type": "number"
+                          },
+                          "page_size": {
+                            "description": "Results per page (default: 25, max: 100)",
+                            "type": "number"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_list_share_links",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "List existing external share links."
+      }
+    },
+    "/paperless_list_storage_paths": {
+      "post": {
+        "operationId": "paperless_list_storage_paths",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "page": {
+                            "description": "Page number (default: 1)",
+                            "type": "number"
+                          },
+                          "page_size": {
+                            "description": "Results per page (default: 25, max: 100)",
+                            "type": "number"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_list_storage_paths",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "List all storage paths."
+      }
+    },
+    "/paperless_list_tags": {
+      "post": {
+        "operationId": "paperless_list_tags",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "page": {
+                            "description": "Page number (default: 1)",
+                            "type": "number"
+                          },
+                          "page_size": {
+                            "description": "Results per page (default: 25, max: 100)",
+                            "type": "number"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_list_tags",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "List all tags in Paperless-ngx."
+      }
+    },
+    "/paperless_list_tasks": {
+      "post": {
+        "operationId": "paperless_list_tasks",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {},
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_list_tasks",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "List recent background tasks (OCR, ingestion, etc.)."
+      }
+    },
+    "/paperless_search_documents": {
+      "post": {
+        "operationId": "paperless_search_documents",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "page": {
+                            "description": "Page number (default: 1)",
+                            "type": "number"
+                          },
+                          "page_size": {
+                            "description": "Results per page (default: 25, max: 100)",
+                            "type": "number"
+                          },
+                          "query": {
+                            "description": "The search query.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "query"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_search_documents",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Search for documents in Paperless-ngx."
+      }
+    },
+    "/paperless_update_correspondent": {
+      "post": {
+        "operationId": "paperless_update_correspondent",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the correspondent.",
+                            "type": "number"
+                          },
+                          "name": {
+                            "description": "The new name.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_update_correspondent",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Update an existing correspondent."
+      }
+    },
+    "/paperless_update_custom_field": {
+      "post": {
+        "operationId": "paperless_update_custom_field",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "data_type": {
+                            "description": "The new data type.",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "The ID of the custom field.",
+                            "type": "number"
+                          },
+                          "name": {
+                            "description": "The new name.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_update_custom_field",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Update a custom field definition."
+      }
+    },
+    "/paperless_update_document": {
+      "post": {
+        "operationId": "paperless_update_document",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "correspondent": {
+                            "description": "The ID of the correspondent.",
+                            "type": "number"
+                          },
+                          "document_type": {
+                            "description": "The ID of the document type.",
+                            "type": "number"
+                          },
+                          "id": {
+                            "description": "The ID of the document.",
+                            "type": "number"
+                          },
+                          "tags": {
+                            "description": "A list of tag IDs.",
+                            "type": "array"
+                          },
+                          "title": {
+                            "description": "The new title.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_update_document",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Update metadata for an existing document."
+      }
+    },
+    "/paperless_update_document_type": {
+      "post": {
+        "operationId": "paperless_update_document_type",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the document type.",
+                            "type": "number"
+                          },
+                          "name": {
+                            "description": "The new name.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_update_document_type",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Update an existing document type."
+      }
+    },
+    "/paperless_update_storage_path": {
+      "post": {
+        "operationId": "paperless_update_storage_path",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "id": {
+                            "description": "The ID of the storage path.",
+                            "type": "number"
+                          },
+                          "name": {
+                            "description": "The new name.",
+                            "type": "string"
+                          },
+                          "path": {
+                            "description": "The new path string.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_update_storage_path",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Update an existing storage path."
+      }
+    },
+    "/paperless_update_tag": {
+      "post": {
+        "operationId": "paperless_update_tag",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "color": {
+                            "description": "The hex color.",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "The ID of the tag.",
+                            "type": "number"
+                          },
+                          "name": {
+                            "description": "The new name.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_update_tag",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Update an existing tag."
+      }
+    },
+    "/paperless_upload_document": {
+      "post": {
+        "operationId": "paperless_upload_document",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "id": {
+                    "example": "1",
+                    "type": "string"
+                  },
+                  "jsonrpc": {
+                    "example": "2.0",
+                    "type": "string"
+                  },
+                  "method": {
+                    "example": "tools/call",
+                    "type": "string"
+                  },
+                  "params": {
+                    "properties": {
+                      "arguments": {
+                        "properties": {
+                          "base64_data": {
+                            "description": "Base64 encoded file content.",
+                            "type": "string"
+                          },
+                          "correspondent": {
+                            "description": "ID of the correspondent.",
+                            "type": "number"
+                          },
+                          "document_type": {
+                            "description": "ID of the document type.",
+                            "type": "number"
+                          },
+                          "file_name": {
+                            "description": "Name for the file (required if using base64_data).",
+                            "type": "string"
+                          },
+                          "file_path": {
+                            "description": "Local path to the file to upload.",
+                            "type": "string"
+                          },
+                          "tags": {
+                            "description": "List of tag IDs.",
+                            "type": "array"
+                          },
+                          "title": {
+                            "description": "Title of the document.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [],
+                        "type": "object"
+                      },
+                      "name": {
+                        "example": "paperless_upload_document",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "arguments"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "jsonrpc",
+                  "id",
+                  "method",
+                  "params"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Upload a document to Paperless-ngx."
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://mcp.theblueonion.app/paperless"
+    }
+  ]
+}
