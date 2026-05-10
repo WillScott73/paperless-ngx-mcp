@@ -27,8 +27,16 @@ func ServeStateless(s *server.MCPServer, port string) error {
 			return
 		}
 		if r.Method == http.MethodGet {
+			if r.URL.Path == "/.well-known/oauth-authorization-server" {
+				http.NotFound(w, r)
+				return
+			}
+			if r.URL.Path != "/" {
+				http.NotFound(w, r)
+				return
+			}
 			w.WriteHeader(http.StatusOK)
-			w.Write([]byte("Paperless MCP Server Operational (Stateless Mode)"))
+			_, _ = w.Write([]byte("Paperless MCP Server Operational (Stateless Mode)"))
 			return
 		}
 		if r.Method != http.MethodPost {
@@ -43,8 +51,12 @@ func ServeStateless(s *server.MCPServer, port string) error {
 		}
 
 		result := s.HandleMessage(r.Context(), rawMessage)
+		if result == nil {
+			w.WriteHeader(http.StatusAccepted)
+			return
+		}
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(result)
+		_ = json.NewEncoder(w).Encode(result)
 	})
 
 	return http.ListenAndServe(addr, handler)
